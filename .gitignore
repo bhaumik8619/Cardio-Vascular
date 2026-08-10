@@ -15,8 +15,9 @@ dist/
 .oxlintrc.json
 
 # Large files & redundant archives/directories
-cardio_model.pkl
-cardio_model.joblib
+/cardio_model.pkl
+/cardio_model.joblib
+!backend/cardio_model.joblib
 Cardio_Vascular_Predictor_Project.zip
 Cardio_Vascular_Predictor_Project/
 
