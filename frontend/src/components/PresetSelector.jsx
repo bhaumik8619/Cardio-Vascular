@@ -58,7 +58,8 @@ const PRESETS = [
   },
 ];
 
-export default function PresetSelector({ onSelectPreset }) {
+export default function PresetSelector({ onSelectPreset, handlePreset }) {
+  const onSelect = onSelectPreset || handlePreset;
   return (
     <div className="presets-container">
       <div className="presets-header">
@@ -70,7 +71,7 @@ export default function PresetSelector({ onSelectPreset }) {
           <button
             key={preset.id}
             className="preset-btn"
-            onClick={() => onSelectPreset(preset.values)}
+            onClick={() => onSelect && onSelect(preset.values)}
             type="button"
           >
             <div>
