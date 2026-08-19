@@ -7,6 +7,7 @@ import CardioForm from './components/CardioForm';
 import HeroSection from './components/HeroSection';
 import FeaturesSection from './components/FeaturesSection';
 import AboutSection from './components/AboutSection';
+import DataInsightsSection from './components/DataInsightsSection';
 import Footer from './components/Footer';
 
 const API_URL = (import.meta.env.VITE_API_URL || 'https://cardio-vascular-backend.onrender.com').replace(/\/+$/, '');
@@ -79,8 +80,14 @@ export default function LandingPage() {
       <Navbar backendOnline={backendOnline} />
       <HeroSection />
       <FeaturesSection />
+      <DataInsightsSection />
       <AboutSection />
       <section id="prediction-form" className="form-section">
+        <div className="form-section-header">
+          <span className="eyebrow">Try it yourself</span>
+          <h2>Run a Live Risk Assessment</h2>
+          <p>Enter patient parameters manually, or load a sample preset to see the model in action.</p>
+        </div>
         <PresetSelector onSelectPreset={handlePreset} handlePreset={handlePreset} />
         <div className="dashboard-grid">
           <CardioForm

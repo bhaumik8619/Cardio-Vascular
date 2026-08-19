@@ -79,24 +79,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Header Navbar */
+.navbar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 20px 0;
+  transition: padding 0.3s ease;
+}
+
+.navbar-wrap.scrolled {
+  padding-top: 10px;
+}
+
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  margin-bottom: 32px;
+  gap: 20px;
+  padding: 12px 20px;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .brand-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
   background: linear-gradient(135deg, #ef4444, #ec4899);
   display: flex;
   align-items: center;
@@ -104,6 +119,7 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
   animation: heartPulse 2.5s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes heartPulse {
@@ -115,13 +131,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-text h1 {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .brand-text p {
-  font-size: 0.825rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.nav-link {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .status-badge {
@@ -130,10 +183,11 @@ h1, h2, h3, h4, h5, h6 {
   gap: 8px;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   font-weight: 600;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-color);
+  white-space: nowrap;
 }
 
 .dot {
@@ -150,6 +204,112 @@ h1, h2, h3, h4, h5, h6 {
 .dot.offline {
   background-color: var(--danger);
   box-shadow: 0 0 10px var(--danger);
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.social-icon-btn:hover {
+  background: var(--primary);
+  color: #090d16;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.menu-toggle {
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 1280px;
+  margin: 10px auto 0;
+  padding: 14px;
+}
+
+.mobile-nav-link {
+  background: transparent;
+  border: none;
+  text-align: left;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mobile-social {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px 4px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 6px;
+}
+
+.mobile-social .social-icon-btn {
+  width: auto;
+  padding: 8px 14px;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  .brand-text p {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .status-badge span {
+    display: none;
+  }
+  .social-links {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .mobile-menu {
+    display: flex;
+  }
 }
 
 /* Preset Cards */
